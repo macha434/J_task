@@ -1,0 +1,6 @@
+#!/bin/sh
+./setcom
+# USB-Serial変換ケーブル使用時の出力先
+./sload $1 > /dev/ttyUSB0
+# Serialポートから直接出力するとき
+# ./sload $1 > /dev/ttyS0

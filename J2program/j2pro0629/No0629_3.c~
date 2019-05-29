@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+  char ch;
+  int i, o=0, e=0, d=0, a=0, oeda=0;
+  
+  srand((unsigned)time(NULL));
+
+  for(i= 0; i< 1000000; i++){
+    ch = rand()% 36;
+
+    if(ch< 10){
+      ch +='0';
+    }else{
+      ch +='a'- 10;
+    }
+
+    if(ch== 'o'){
+      o++;
+    }else if(ch== 'e'){
+      e++;
+    }else if(ch== 'd'){
+      d++;
+    }else if(ch== 'a'){
+      a++;
+    }
+
+    if(o>=1 && e>=1 && d>=1 && a>=1){
+      oeda++;
+    }
+  }
+  printf("oedaが出た回数%d回\n", oeda);
+
+  return 0;
+}

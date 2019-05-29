@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <math.h>
+
+double rad_(double angle)
+{
+  double rad;
+  
+  rad = ((angle* M_PI)* 2)/ 360.0;
+  
+  return rad;
+}
+
+
+double times(double rad)
+{
+  double time, a;
+
+  a = sin(rad);
+  time = ((30* a)* 2)/ 9.80665;
+
+  return time;
+}
+
+
+double m_(double rad, double time)
+{
+  double m, c;
+
+  c = cos(rad);
+  m = c* time* 30;
+
+  return m;
+}
+
+int main(void)
+{
+  double rad, time, m, angle;
+  
+  printf("角度を入力してください。:");
+  scanf("%lf", &angle);
+  
+  rad = rad_(angle);
+  time = times(rad);
+  m = m_(rad, time);
+ 
+  printf("%fメートルです。\nMaxは45度です。\n", m);
+
+  return 0;
+}

@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main(void)
+{
+  int a;
+  
+  printf("年齢を入力してください。:\n");
+  scanf("%d",&a);
+
+  switch (a){
+  case a<6 : puts("無料です。"); break;
+
+  }
+  return 0;
+}

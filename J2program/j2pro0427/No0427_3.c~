@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib>
+#include>
+#include <time.h>
+
+int main(void){
+  int i;
+  int val;
+  int a;
+
+  srand((unigned)time(NULL));
+  

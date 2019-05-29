@@ -1,0 +1,15 @@
+Analysis & Synthesis Status : Successful - Fri Dec 08 18:54:09 2017
+Quartus II Version : 8.1 Build 163 10/28/2008 SJ Web Edition
+Revision Name : No5
+Top-level Entity Name : No5
+Family : Stratix II
+Logic utilization : N/A
+    Combinational ALUTs : 2
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 4
+Total virtual pins : 0
+Total block memory bits : 0
+DSP block 9-bit elements : 0
+Total PLLs : 0
+Total DLLs : 0

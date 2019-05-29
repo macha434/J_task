@@ -1,0 +1,15 @@
+Analysis & Synthesis Status : Successful - Mon Jan 29 17:58:11 2018
+Quartus II Version : 8.1 Build 163 10/28/2008 SJ Web Edition
+Revision Name : 7counter
+Top-level Entity Name : 7counter
+Family : Stratix II
+Logic utilization : N/A
+    Combinational ALUTs : 3
+    Dedicated logic registers : 3
+Total registers : 3
+Total pins : 5
+Total virtual pins : 0
+Total block memory bits : 0
+DSP block 9-bit elements : 0
+Total PLLs : 0
+Total DLLs : 0

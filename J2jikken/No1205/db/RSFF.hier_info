@@ -1,0 +1,9 @@
+|RSFF
+Q <= inst11.DB_MAX_OUTPUT_PORT_TYPE
+K => inst11~1.IN0
+J => inst11~0.IN1
+S => inst7.IN0
+S => inst5.IN0
+Q_ <= inst14.DB_MAX_OUTPUT_PORT_TYPE
+
+

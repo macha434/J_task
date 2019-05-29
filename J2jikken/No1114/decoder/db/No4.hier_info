@@ -1,0 +1,13 @@
+|No4
+F0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+b1 => inst21.IN0
+b1 => inst9.IN0
+b1 => inst10.IN0
+b0 => inst20.IN0
+b0 => inst8.IN1
+b0 => inst10.IN1
+F1 <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+F2 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+F3 <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+

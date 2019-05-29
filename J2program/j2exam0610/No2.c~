@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+double calc_BMI(double weight, double hight)
+{
+  double BMI;
+
+  BMI= weight* (hight* hight);
+
+  return BMI;
+}
+
+int main(void)
+{
+  double weight, hight, BMI;
+
+  printf("体重を入力してください。 :");
+  scanf("%d", &weight);
+
+  printf("身長を入力してください。 :");
+  scanf("%d", &hight);
+
+  BMI= calc_BMI(weight, hight);
+
+  printf("BMIは%dです。\n");
+
+  return 0;
+}

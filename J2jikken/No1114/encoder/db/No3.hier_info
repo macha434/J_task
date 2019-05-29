@@ -1,0 +1,9 @@
+|No3
+b1 <= inst26.DB_MAX_OUTPUT_PORT_TYPE
+F1 => inst24.IN0
+F0 => inst.IN0
+b0 <= inst25.DB_MAX_OUTPUT_PORT_TYPE
+F2 => inst27.IN0
+F3 => ~NO_FANOUT~
+
+

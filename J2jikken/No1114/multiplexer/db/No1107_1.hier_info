@@ -1,0 +1,8 @@
+|No1107_1
+F <= inst26.DB_MAX_OUTPUT_PORT_TYPE
+S => inst11.IN0
+S => inst.IN0
+D1 => inst27.IN1
+D0 => inst.IN1
+
+

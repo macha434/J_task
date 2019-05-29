@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+char my_toupper(char ch);
+
+int main()
+{
+  char ch, dummy;
+
+  printf("英小文字を一つ入力してください :");
+  scanf("%c%c", &ch, &dummy);
+
+  for(; ch< 'a' || ch> 'z' ;){
+    
+    printf("英小文字を一つ入力してください :");
+    scanf("%c%c", &ch, &dummy);
+
+  }
+
+  ch= my_toupper(ch);
+
+  printf("入力した小文字の大文字は%cです。\n", ch);
+
+  return 0;
+}
+
+char my_toupper(char ch)
+{
+  ch= ch- 32; //英小文字から英大文字
+
+  return ch;
+}

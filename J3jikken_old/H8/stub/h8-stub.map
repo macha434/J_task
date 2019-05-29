@@ -1,0 +1,122 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+registers           0x28              h8-stub.o
+in_nmi              0x1               h8-stub.o
+exception           0x4               h8-stub.o
+stub_sp             0x4               h8-stub.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+vect             0x00ffe000         0x00000100
+intram           0x00ffe200         0x00001710
+stack            0x00fff910         0x00000600
+extram           0x0021f700         0x00000900
+
+Linker script and memory map
+
+
+.vectors        0x00ffe000      0x100
+ *(.vectors)
+ .vectors       0x00ffe000      0x100 head.o
+                0x00ffe100                .=ALIGN(0x4)
+
+.text           0x00ffe200     0x155c
+                0x00ffe200                __text=.
+ entry.o(.text)
+ .text          0x00ffe200       0x76 entry.o
+                0x00ffe200                start
+ *(.text)
+ .text          0x00ffe276      0x496 isr.o
+                0x00ffe56c                INT_IMIB3
+                0x00ffe594                INT_IMIA4
+                0x00ffe6e4                INT_ADI
+                0x00ffe454                INT_IRQ4
+                0x00ffe530                INT_IMIB2
+                0x00ffe51c                INT_IMIA2
+                0x00ffe67c                INT_TEI0
+                0x00ffe5d0                INT_DEND0A
+                0x00ffe47c                INT_WOVI
+                0x00ffe3a2                INT_TRAP2
+                0x00ffe580                INT_OVI3
+                0x00ffe4b8                INT_IMIB0
+                0x00ffe36e                INT_TRAP0
+                0x00ffe544                INT_OVI2
+                0x00ffe468                INT_IRQ5
+                0x00ffe620                INT_ERI0
+                0x00ffe418                INT_IRQ1
+                0x00ffe4e0                INT_IMIA1
+                0x00ffe440                INT_IRQ3
+                0x00ffe6d0                INT_TEI1
+                0x00ffe664                INT_TXI0
+                0x00ffe490                INT_CMI
+                0x00ffe60c                INT_DEND1B
+                0x00ffe42c                INT_IRQ2
+                0x00ffe3d6                INT_IRQ0
+                0x00ffe5a8                INT_IMIB4
+                0x00ffe5f8                INT_DEND1A
+                0x00ffe4cc                INT_OVI0
+                0x00ffe3bc                INT_TRAP3
+                0x00ffe6a8                INT_RXI1
+                0x00ffe388                INT_TRAP1
+                0x00ffe6f8                INT_Reserved
+                0x00ffe6bc                INT_TXI1
+                0x00ffe62c                INT_RXI0
+                0x00ffe558                INT_IMIA3
+                0x00ffe4f4                INT_IMIB1
+                0x00ffe508                INT_OVI1
+                0x00ffe694                INT_ERI1
+                0x00ffe5e4                INT_DEND0B
+                0x00ffe5bc                INT_OVI4
+                0x00ffe4a4                INT_IMIA0
+                0x00ffe342                INT_NMI
+ .text          0x00ffe70c       0xce h8-sci.o
+                0x00ffe7b0                putDebugChar
+                0x00ffe722                init_serial
+                0x00ffe760                getDebugChar
+                0x00ffe70c                handleError
+ .text          0x00ffe7da      0xd86 h8-stub.o
+                0x00fff470                start_gdbstub
+                0x00fff462                breakpoint
+                0x00fff438                handle_exception
+ .text          0x00fff560       0x44 string.o
+                0x00fff57a                memcpy
+                0x00fff560                strlen
+ *(.rodata)
+ .rodata        0x00fff5a4      0x1b8 h8-stub.o
+                0x00fff75c                .=ALIGN(0x4)
+
+.data           0x0021f700        0x0
+                0x0021f700                __data_start=.
+ *(.data)
+                0x0021f700                .=ALIGN(0x2)
+                0x0021f700                __data_end=(__data_start+SIZEOF(.data))
+                0x0021f700                __bss_start=.
+
+.bss            0x0021f700      0x854
+ *(.bss)
+ .bss           0x0021f700      0x818 h8-stub.o
+ *(COMMON)
+ *fill*         0x0021ff18        0x8
+ COMMON         0x0021ff20       0x34 h8-stub.o
+                                  0x0 (size before relaxing)
+                0x0021ff20                registers
+                0x0021ff48                in_nmi
+                0x0021ff4c                exception
+                0x0021ff50                stub_sp
+                0x0021ff54                .=ALIGN(0x2)
+                0x0021ff54                __bss_end=.
+
+.stack          0x00fff910      0x600
+ *(.stack)
+ .stack         0x00fff910      0x600 h8-stub.o
+                0x00fffe10                stub_stack
+LOAD head.o
+LOAD entry.o
+LOAD isr.o
+LOAD h8-sci.o
+LOAD h8-stub.o
+LOAD string.o
+OUTPUT(h8-stub coff-h8300)

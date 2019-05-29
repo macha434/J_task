@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int Exponentiation(int a, int n)
+{
+  int ex;
+
+  for (n= n; n> 0; n--){
+    ex = a* a;
+  }
+
+  return ex;
+}
+
+int main(void)
+{
+  int a, n, ans;
+
+  printf("累乗したい数を入力してください。 :");
+  scanf("%d",&a);
+  printf("何乗しますか。 :");
+  scanf("%d",&n);
+
+  ans = Exponentiation(a,n);
+
+  return 0;
+}

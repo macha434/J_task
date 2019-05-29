@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int calc_second(int hour, int minute, int second)
+{
+  int Cumulative;
+
+  Cumulative = hour* 3600+ minute* 60+ second;
+
+  return Cumulative;
+}
+
+int main(void)
+{
+  int hour, minute, second, total;
+
+  printf("何時ですか。 :");
+  scanf("%d", &hour);
+  
+  if (hour>=24){
+    printf("error");
+    return 0;
+  }
+  
+  printf("何分ですか。 :");
+  scanf("%d", &minute);
+  
+   if (hour>=24){
+    printf("error");
+    return 0;
+  }
+   
+  printf("何秒ですか。 :");
+  scanf("%d", &second);
+  
+   if (hour>=24){
+    printf("error");
+    return 0;
+  }
+
+  total = calc_second(hour, minute, second);
+  printf("%d時%d分%d秒は、%d秒です。\n", hour, minute, second, total);
+
+  return 0;
+
+}

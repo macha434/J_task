@@ -1,0 +1,13 @@
+|conter
+Q0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+K => inst2~1.IN0
+K => inst1~1.IN0
+K => inst~1.IN0
+J => inst2~0.IN1
+J => inst1~0.IN1
+J => inst~0.IN1
+CLK => inst13.IN0
+Q1 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Q3 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+

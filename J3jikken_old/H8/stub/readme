@@ -1,0 +1,104 @@
+          GDB stub program for H8/3069F(Version 1.0)
+
+This program may be distributed under GNU Lesser GPL.
+
+1. 初めに
+このプログラムは (株)秋月電子通商製 AKI-H8/3069F LAN用 GDB stub です。
+ターゲットで実行することによりシリアル経由でホストで実行するgdbによる
+ダウンロード、リモートデバッグが可能です。
+尚、開発にあたりSH3用stubを参考としました。
+
+
+2. stubの概要
+2.1 ワーク領域
+stubはRAMの0x5FF000〜0x5FFFFFをワーク領域として使用します。この領域は
+プログラムで使用しないでください。
+
+なお、このワークエリアの設定はXXX.memファイルで変更可能です。
+
+
+2.2 使用ポートと設定
+ホストのgdbとの通信はSCI0を使用します。通信仕様は次の通りです。
+
+・通信速度      : 57600bps
+・データ        : 8bit
+・パリティ      : 無し
+・ストップビット: 1bit 
+
+H8-sci.c の init_serialで定義しています。
+
+
+2.3 trapaによる機能
+trapa #1 を実行することによりstubの機能を呼び出します。
+
+2.3.1 gdbのコンソールへの出力
+er0 に0, er1 に出力したい文字を入れ trapa #1 を実行するとその文字が
+ホストの gdbのコンソールに出力されます。
+(gdb 5.2.1/cygwinにて動作確認)
+
+cpu_config.c を以下のように修正すると、カーネルが出力するメッセージが
+gdbのコンソールに出力されます。
+
+void
+cpu_putc(char c)
+{
+#ifdef GDB_STUB
+	asm("push.l	er1");
+	asm("mov.l	er0, er1");
+	asm("sub.l	er0, er0");
+	asm("trapa	#1");
+	asm("pop.l	er1");
+#else
+    if (c == '\n') {
+        SCI_putchar(SYSTEM_SCI, '\r');
+    }
+    SCI_putchar(SYSTEM_SCI, c);
+#endif		/* GDB_STUB */
+}
+
+
+2.4 gdbによるシリアル経由のブレーク
+ターゲットでプログラムを実行中に gdb 上で ctrl-C を押すとブレークがか
+かります。この機能は、gdb と通信を行うシリアルポートの受信割り込みに
+より実現しています。
+
+
+3. 実行
+Makefileを GDB_STUB = true としてmake後、そのファイルをgdbの引数に指定
+して実行します。
+
+   $ h8300-hms-gdb jsp.exe
+
+gdbが起動したら次のコマンドを実行します。
+   (gdb) set remotebaud 57600
+   (gdb) target remote /dev/com1
+   0x0000140a in ?? ()
+
+次にプログラムをダウンロードします。
+
+   (gdb)load
+
+ロードが終了したら実行します。
+
+   (gdb)continue
+
+実行中にctrl-Cを押すとプログラムの実行をブレークします。
+後はホストで通常のgdbによるデバッグと等しい操作が行えます。
+gdbの使い方は、各種マニュアルを参考にしてください。
+
+
+4. 補足
+
+GDBのソースコードを展開したディレクトリ以下の
+./gdb/config/h8300/tm-h8300.h を以下のように修正した方が良いでしょう。
+
+62行目
+#define TARGET_INT_BIT  32
+
+155行目
+#define ARGLAST_REGNUM	1
+
+
+-----------------------------------------------------------------------------
+田沢 尚則(Naonori Tazawa),<int@kt.rim.or.jp> 3 June 2003
+

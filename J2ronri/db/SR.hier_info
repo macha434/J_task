@@ -1,0 +1,15 @@
+|SR
+SR <= inst15.DB_MAX_OUTPUT_PORT_TYPE
+S => inst16.IN0
+R => inst15.IN1
+DFF <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst17.IN0
+CLK => inst13.IN1
+D => inst.DATAIN
+JKFF <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst1~1.IN0
+J => inst1~0.IN1
+TFF <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+T => inst2~0.IN0
+
+

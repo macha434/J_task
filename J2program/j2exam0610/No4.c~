@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+int main()
+{
+  int a;
+  a= 11* 10* 9;
+  printf("%d",a);
+}

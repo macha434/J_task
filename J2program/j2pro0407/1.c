@@ -1,0 +1,11 @@
+#include<stdio.h>
+
+int main(void)
+{
+  int a = 2460;
+
+  a = a %50;
+  printf("a = %d\n",a);
+  
+  return 0;
+}
