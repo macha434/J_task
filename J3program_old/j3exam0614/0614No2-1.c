@@ -60,7 +60,7 @@ void insertValueToList(CELL *p)
 	int basyo;
 	int i;
 	CELL *q;
-	
+
 	printf("Input data: ");
 	scanf("%d", &data);
 	printf("Input basyo: ");
@@ -92,14 +92,14 @@ void deleteValueToList(CELL *p)
     printf("Where deleat place ? : ");
     scanf("%d", &place);
 
-    
+
     for ( ; place > 0 ; place--, p = p -> next){
         if (p == NULL){
             printf("error");
             return;
         }
     }
-    
+
 	q = p->next;
 	p->next = p->next->next;
 	free(q);
@@ -108,7 +108,7 @@ void deleteValueToList(CELL *p)
 void clearList(CELL *p)
 {
 	CELL *q;
-	
+
 	while ( p->next != NULL ) {
 		q = p->next;
 		p->next = p->next->next;

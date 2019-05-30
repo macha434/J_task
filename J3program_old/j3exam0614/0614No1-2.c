@@ -51,10 +51,10 @@ void printList(int myList[])
 void insertValueToList(int myList[])
 {
 	int data;
-	
+
 	printf("Input data: ");
 	scanf("%d", &data);
-	
+
 	shiftValueToList(myList, 0);
 	myList[0] = data;
 }
@@ -62,7 +62,7 @@ void insertValueToList(int myList[])
 void shiftValueToList(int myList[], int m)
 {
 	int i;
-	
+
 	for ( i = 0; myList[i] != -1; i++);
 	for ( ; i >= m; i--) {
 		myList[ i + 1 ] = myList[i];

@@ -39,13 +39,13 @@ int main(){
     while (data > 0){
 
         stru -> next = (CELL *) malloc (sizeof (CELL));
-        
+
         stru = stru -> next;
-        
+
         stru -> value = data;
 
         stru -> next = NULL;
-        
+
         stru = sort_List (root, stru);
 
         printf ("Input data : ");
@@ -63,7 +63,7 @@ CELL *sort_List (CELL *p, CELL *q){
     for ( ; q != NULL ; p = p -> next, q = q -> next){
 
         if (p -> value > q -> value){
-            
+
             p = q;
             q -> next = p -> next;
             p -> next = q;
@@ -79,9 +79,9 @@ void print_List (CELL *root){
     CELL *p= root;
 
     printf ("\nprint_List START\n\n");
-    
+
     for ( ; p != NULL ; p = p -> next ){
-        
+
         printf ("%d\n", p -> value);
 
     }
