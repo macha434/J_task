@@ -1,13 +1,11 @@
 #include <stdio.h>
 
-int anser_X(int XA1, XA2, XB1, XB2, CA, CB);
-int anser_Y(int YA1, YA2, YB1, YB2, CA, CB);
+int length(int A1, int A2, int B1, int B2);
 
 struct rect {
     int X1, X2;
     int Y1, Y2;
-    int CX, CY;
-}
+};
 
 int main(){
 
@@ -26,19 +24,39 @@ int main(){
     rectB.Y1 = 6;
     rectB.Y2 = 8;
 
-    rectA.CX = rectA.X1 + (rectA.X2 - rectA.X1) / 2;
-    rectA.CY = rectA.Y1 + (rectA.Y2 - rectA.Y1) / 2;
-
-    rectB.CX = rectB.X1 + (rectB.X2 - rectB.X1) / 2;
-    rectB.CY = rectB.Y1 + (rectB.Y2 - rectB.Y1) / 2;
-
-    AX = anser_X(rectA.X1, rectA.X2, rectB.X1, rectB.X2, re);
-    AY = anser_Y(rectA.Y1, rectA.Y2, rectB.Y1, rectB.Y2);
+    AX = length(rectA.X1, rectA.X2, rectB.X1, rectB.X2);
+    AY = length(rectA.Y1, rectA.Y2, rectB.Y1, rectB.Y2);
 
     printf("area is %d.\n", AX * AY);
+
+    return 0;
 }
 
-int anser_X(int XA1, XA2, XB1, XB2, CA, CB){
+int length(int A1, int A2, int B1, int B2){
 
+    int l, l1 = 0, l2 = 0;
 
+    if (A1 > B2 && A1 < B1){
+
+        l1 = A1;
+
+    }else if (B1 > A2 && B1 < A1){
+
+        l1 = B1;
+
+    }
+
+    if (A2 > B2 && A1 < B1){
+
+        l2 = A2;
+
+    }else if (B1 > A2 && B1 < A1){
+
+        l2 = B2;
+
+    }
+
+    l = l1 - l2;
+
+    return l;
 }
