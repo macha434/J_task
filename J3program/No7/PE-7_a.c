@@ -1,15 +1,18 @@
 #include <stdio.h>
 
+#define N 10
+
 void Swap(int *a, int *b);
 
 int main(){
+
     int i, j;
-    int str[] = {4, 2, 6, 19, 7, 12, 3, 1, 9};
+    int str[N];
     int *min;
 
     min = str;
 
-    for (j = 0; str[i] != '\0'; j++){
+    for (j = 0; j < N; j++){
 
         if(min > str[j]){
             min = &str[j];
