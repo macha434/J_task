@@ -1,61 +1,68 @@
 #include <stdio.h>
 
-int main(){
-    int i, j, k;
-    bool flag = 0;
-    char str[] = "Kisarazu Kosen Kisarazu Chiba Japan";
-    char clone[255][255] = "";
+void insert_strings(char str[], char clone_str[5][10]);
+int check_str(char clone_str[5][10], char *strings, int num);
+void print_str(char clone_str[5][10]);
 
-    i = 0;
+int main(){
+
+    char str[] = "kisarazu kosen kisarazu chiba japan";
+    char clone_str[5][10];
+
+    insert_strings(str, clone_str);
+
+    print_str(clone_str);
+
+    return 0;
+}
+
+void insert_strings(char str[], char clone_str[5][10]){
+
+    int i, j, k;
+
     k = 0;
 
-    make_clone(str, clone);
+    for (i = 0; str[k] != '\0'; i++){
 
-    for (j = 0; str[i] != '\0'; j++){
+        for (j = 0; str[k] != ' '; k++, j++){
 
-        clone[k][k + 1] = '\0';
-
-        flag = check_str(clone, clone[j][0]);
-
-        if (flag){
-
-            add_str(str, clone);
-
-        }else{
-
-            k++;
-
+            clone_str[i][j] = str[k];
         }
-    }
 
-    printf("%s\n", clone);
+        clone_str[i][j] = '\0';
+
+        i = check_str(clone_str, &clone_str[i][0], i);
+
+        k++;
+    }
 }
 
-void make_clone(char str[], clone[][]){
+int check_str(char clone_str[5][10], char *strings, int num){
 
     int i, j;
+    int n;
 
-    for (j = 0; str[i] != '\0'; j++){
+    n = num;
 
-        if (str[j] == ' '){
+    for (i = 0; i < num; i++){
 
-            clone[k][j + 1] = '\n'
-            k++;
+        for (j = 0; clone_str[i][j] ==  strings[j]; j++){
+
+            if (clone_str[i][j] == '\0') return num--;
         }
-
-        clone[k][j] = str[i];
-
     }
+
+    return num;
 }
 
-bool check_str(char **str, char *word){
+void print_str(char clone_str[5][10]){
 
-    bool frag = 0;
+    int size;
 
-    if (**str == '\0' || *word == '\0'){
+    size = sizeof(*clone_str) / sizeof(**clone_str);
 
-        j++;
+    for (int i = 0; i < size; i++){
 
+        printf("%s\n", clone_str[i]);
     }
-    check_str(str[j][i], word[i]);
 }
