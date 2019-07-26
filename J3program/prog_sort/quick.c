@@ -1,10 +1,16 @@
 #include <stdio.h>
 
+#define NUM 10
+
 void quick_sort(int seq[]);
+void swap(int *i, int *j);
+void print_array(int seq[]);
 
 int main(){
 
-    int seq[10] = {2, 5, 3, 1, 6, 7, 10, 9, 4, 8};
+    int seq[NUM] = {2, 5, 3, 1, 6, 7, 10, 9, 4, 8};
+
+    print_array(seq);
 
     quick_sort(seq);
 
@@ -13,33 +19,61 @@ int main(){
 
 void quick_sort(int seq[]){
 
-    int h, l;
+    int h = 0, l = 0;
     int s;
 
-    for (int i = 0; i < 10; i++){
+    for (int i = 0; i < NUM; i++){
 
-        s = seq[9];
+        s = seq[NUM -1];
 
-        for (int j = 0; j < 10; j++){
+        h = 0;
 
-            if (seq[j] > s){
+        l = NUM - 1;
 
-                h = seq[j];
+        while (h < l){
 
-                break;
+            for (h = 0; h < NUM; h++){
 
-            }
-        }
-
-        for (int j =10 - i; j > 0; j--){
-
-            if (seq[j] < s){
-
-                s = seq[j];
-
-                break;
+                if (seq[h] > seq[NUM - 1]) break;
 
             }
+
+            for (l = NUM - i -1; l > 0; l--){
+
+                if (seq[l] < seq[NUM - 1]) break;
+
+            }
+
+            swap(&seq[h], &seq[l]);
+
         }
+
+        swap(&seq[h], &seq[NUM - 1]);
+
+        print_array(seq);
     }
+}
+
+void swap(int *i, int *j){
+
+    int tmp;
+
+    tmp = *i;
+
+    *i = *j;
+
+    *j = tmp;
+}
+
+void print_array(int seq[]){
+
+    printf("array[");
+
+    for (int i = 0; i < NUM; i++){
+
+        printf("%d, ", seq[i]);
+
+    }
+
+    printf("]\n");
 }
