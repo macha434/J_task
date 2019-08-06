@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  int Ch[26]={0};
+  int ch[26]={0};
+  char str[500];
+  scanf("%[^\n]",str);
+
+  for(int i=0;i<strlen(str);i++){
+    if(str[i]<='z'&&str[i]>='a'){
+      if(ch[str[i]-'a']==0) printf("%c",str[i]);
+      
+      ch[str[i]-'a']++;
+    }
+    if(str[i]<='Z'&&str[i]>='A'){
+      if(Ch[str[i]-'A']==0) printf("%c",str[i]);
+      Ch[str[i]-'A']++;
+    }
+  }
+  return 0;
+}

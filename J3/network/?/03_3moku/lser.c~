@@ -1,0 +1,15 @@
+#include <stdio.h>
+static int a;
+void add(){
+  a++;
+}
+void prin(){
+  printf("%d",a);
+}
+int main()
+{
+  add();
+  add();
+  prin();
+  return 0;
+}

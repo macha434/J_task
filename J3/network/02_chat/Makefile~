@@ -1,0 +1,36 @@
+BIN=	server \
+	server.mod \
+	client \
+	client.mod \
+	client2 \
+	client2.mod
+
+all : $(BIN)
+
+clean:
+	rm -f *.c~
+	rm -f $(BIN)
+
+server:	server.c \
+			$(LIBS)
+	gcc -o $@ $^
+
+server.mod:	server.mod.c \
+			$(LIBS)
+	gcc -o $@ $^
+
+client:	client.c \
+			$(LIBS)
+	gcc -o $@ $^
+
+client.mod:	client.mod.c \
+			$(LIBS)
+	gcc -o $@ $^
+
+client2:	client2.c \
+			$(LIBS)
+	gcc -o $@ $^
+
+client2.mod:	client2.mod.c \
+			$(LIBS)
+	gcc -o $@ $^
