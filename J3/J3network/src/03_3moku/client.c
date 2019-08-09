@@ -8,8 +8,7 @@
 /* 3目並べの先手(クライアント)プログラム */
 
 #include "goban.h"
-
-main()
+int main(void)
 {
 	int soc;              /* ソケットのディスクリプタ */
 	char my_stone='x';    /* 自分の石                 */
@@ -44,4 +43,5 @@ main()
 
 	/* 終了処理 */
 	goban_destroy();
+	return 0;
 }

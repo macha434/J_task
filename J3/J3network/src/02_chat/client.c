@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
@@ -14,13 +16,13 @@
 #define PORT     (in_port_t)50000 /* サーバ(相手)のポート番号 */
 #define BUF_LEN  512              /* 送受信のバッファの大きさ */
 
-main()
+int main(void)
 {
 	/* 変数宣言 */
 	struct hostent  *server_ent; /* サーバ(相手)の情報 */
 	struct sockaddr_in  server;  /* サーバ(相手)のアドレス */
 	int soc;                     /* ソケットのディスクリプタ */
-	char hostname[]="cisprof08"; /* サーバ(相手)のホスト名 */
+	char hostname[]="localhost"; /* サーバ(相手)のホスト名 */
 	char buf[BUF_LEN];           /* 送受信のバッファ  */
 
 	/* サーバ(相手)のホスト名からアドレス情報を得る  */
@@ -53,6 +55,7 @@ main()
 
 	/* 通信のループ */
 	do{
+	  printf("Go Ahead!!!");
 		int n;                       /* 読み込まれたバイト数  */
 
 		n = read(soc, buf, BUF_LEN); /* ソケットsocから読む   */
@@ -64,4 +67,5 @@ main()
 
 	/* ソケットを閉じる */
 	close(soc);
+	return 0;
 }

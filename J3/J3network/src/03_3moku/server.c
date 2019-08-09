@@ -9,7 +9,7 @@
 
 #include "goban.h"
 
-int main()
+int main(void)
 {
 	int soc;              /* ソケットのディスクリプタ */
 	char my_stone='o';    /* 自分の石                 */
@@ -38,4 +38,6 @@ int main()
 
 	/* 終了処理 */
 	goban_destroy();
+	return 0;
 }
+

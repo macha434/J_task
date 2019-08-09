@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
@@ -14,7 +16,7 @@
 #define PORT     (in_port_t)50000 /* サーバ(自分)のポート番号 */
 #define BUF_LEN  512              /* 送受信のバッファの大きさ */
 
-main()
+int main(void)
 {
 	/* 変数宣言 */
 	struct sockaddr_in me; /* サーバ(自分)の情報   */
@@ -65,4 +67,5 @@ main()
 
 	/* ソケットを閉じる */
 	close(soc);
+	return 0;
 }

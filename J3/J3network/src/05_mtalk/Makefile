@@ -1,0 +1,41 @@
+#*********************************************/
+#*       File name:  Makefile                */
+#*    Project name:  socket/mtalk            */
+#*      Month/Year:  Jan/2003                */
+#*          Author:  Shuichi YUKITA          */
+#*********************************************/
+
+MYLIBDIR = ../mylib
+MYLIB    = $(MYLIBDIR)/mylib.a
+
+OBJS1    = server.o  sessionman.o
+OBJS2    = client.o  session.o
+OBJS4	 = client.mod.o session.mod.o
+
+CFLAGS   = -I$(MYLIBDIR)
+
+BIN =	server \
+	client \
+	server.mod \
+	client.mod
+
+all:	$(BIN)
+
+clean:
+	$(RM) $(BIN) $(OBJS1) $(OBJS2) *~
+
+
+server.o:	sessionman.h
+
+client.o:	session.h
+
+client.mod.o:	sessionman.h
+
+server:	$(OBJS1)
+	$(CC) -o $@ $^  $(MYLIB)  -lcurses
+
+client:	$(OBJS2)
+	$(CC) -o $@ $^  $(MYLIB)  -lcurses
+
+client.mod:	$(OBJS4)
+	$(CC) -o $@ $^  $(MYLIB)  -lcurses
