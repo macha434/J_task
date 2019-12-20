@@ -30,7 +30,7 @@ int Get_Hash(char*key)
 
   while(*key!='\0')
     hashval+=*key++;
-  
+
   return(hashval%HASHSIZE);	//SaveforSizeOver
 }
 
@@ -48,7 +48,7 @@ int Add_HTable(char *kw)
       }
       strcpy((*p).keyword,kw);
       hashval=Get_Hash(kw);
-      
+
       if(hashtable[hashval]==NULL){
 	hashtable[hashval]=p;
 	p->next=NULL;
@@ -68,11 +68,11 @@ int Add_HTable(char *kw)
 int FindKeyWord(char*key)
 {
   Hash *p;
-  
+
   for(p=hashtable[Get_Hash(key)];p!=NULL;p=p->next)
     if(!strcmp(key,(*p).keyword))
       return(true);
-  
+
   return(false);
 }
 
@@ -80,7 +80,7 @@ void FreeKeyWord(void)
 {
   int i;
   Hash *p,*q;
-  
+
   for(i=0;i<HASHSIZE;i++)
     for(p=hashtable[i];p!=NULL;){
       q=p->next;
@@ -103,9 +103,9 @@ int main(void)
   for(i=0;i<strlen(str);i++){
     if(str[i]==' '||str[i]==','){i++;j++;c=0;}
     word[j][c]=str[i];
-    c++;                                                                              
-  } 
-  c=j;   
+    c++;
+  }
+  c=j;
   for(i=0;i<=c;i++){
     num=Add_HTable(word[i]);
   }
